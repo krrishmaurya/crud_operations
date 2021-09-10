@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=., initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method="POST" class="oo">
+        {% csrf_token %}
+       <label for="">Name:{{Student_form.student_name}}</label>
+       <label for="">roll.no:{{Student_form.roll_no}}</label>
+        <button type="submit">add  to list  </button>
+    </form>
+    <ol>
+        <!-- keyname -->
+         {% for i in student_details %}  
+        <li><form action="/del" method="POST">
+            {% csrf_token %}
+            <label for="">{{i.student_name}} {{i.roll_no}} 
+
+            </label>
+            
+            <input type="hidden" name="student_id" value={{i.id}}>
+            <button type="submit">remove</button>
+        </form>
+
+        </li>
+        
+        {% endfor %}
+    </ol>
+</body>
+</html>
